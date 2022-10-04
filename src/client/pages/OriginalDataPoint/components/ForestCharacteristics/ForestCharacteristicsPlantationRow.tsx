@@ -49,8 +49,6 @@ const ForestCharacteristicsPlantationRow: React.FC<Props> = (props) => {
     return null
   }
 
-  // const isPlantationPercentNull = plantationPercent === null
-
   const isZeroOrNullPlantationIntroduced = plantationIntroduced === null || Numbers.eq(plantationIntroduced, 0)
 
   return (
