@@ -517,7 +517,7 @@ FRA工作组
       subject: 'FRA平台邀请',
       textMessage: `尊敬的 {{invitedUser}},
 
-您被邀请以{{country}}{{role}} 的身份访问FRA平台。
+您被邀请以{{country}}{{role}} 的身份访问 {{assessmentName}}{{cycleName}}。
 
 请点击下述链接接受邀请和访问FRA平台：
 {{- link}}
@@ -529,7 +529,7 @@ FRA工作组 fra@fao.org
     `,
       htmlMessage: `尊敬的 {{invitedUser}},
 <br/><br/>
-您被邀请以{{country}}{{role}} 的身份访问FRA平台。.
+您被邀请以{{country}}{{role}} 的身份访问 {{assessmentName}}{{cycleName}}。
 <br/><br/>
 <b><a href="{{- link}}">接受邀请并访问平台</a></b>
 <br/><br/>

@@ -470,7 +470,7 @@ module.exports.translation = {
       subject: 'Приглашение на платформу ОЛР',
       textMessage: `Уважаемый(ая) {{invitedUser}},
 
-Вас пригласили на платформу ОЛР в качестве {{role}} для {{country}}.
+Вас пригласили {{assessmentName}} {{cycleName}} в качестве {{role}} для {{country}}.
 
 Примите это приглашение и зайдите на платформу по следующему адресу:
 {{- link}}
@@ -482,7 +482,7 @@ module.exports.translation = {
     `,
       htmlMessage: `Уважаемый(ая) {{invitedUser}},
 <br/><br/>
-Вас пригласили на платформу ОЛР в качестве {{role}} для {{country}}.
+Вас пригласили на {{assessmentName}} {{cycleName}} в качестве {{role}} для {{country}}.
 <br/><br/>
 <b><a href="{{- link}}">Примите это приглашение и зайдите на платформу</a></b>
 <br/><br/>
