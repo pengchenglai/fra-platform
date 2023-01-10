@@ -7,10 +7,13 @@ import { getForestEstimationData } from '@client/pages/Geo/utils/forestEstimatio
 
 import GeoMapMenuButton from '../GeoMapMenuButton'
 import GeoMenuItem from '../GeoMapMenuItem'
+import StatisticalGraphsPanel from './StatisticalGraphsPanel'
 import TreeCoverAreaPanel from './TreeCoverAreaPanel'
 
 const GeoMapMenuStatistics: React.FC = () => {
   const [statisticsData, setStatisticsData] = useState([])
+  const [fra1aForestArea, setFra1aForestArea] = useState(0.0)
+  const [fra1ALandArea, setFra1ALandArea] = useState(0.0)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [year, setYear] = useState(2020)
@@ -25,6 +28,8 @@ const GeoMapMenuStatistics: React.FC = () => {
     try {
       const forestEstimations = await getForestEstimationData(countryIso, year)
       data = forestEstimations.data
+      setFra1aForestArea(forestEstimations.fra1aForestArea)
+      setFra1ALandArea(forestEstimations.fra1ALandArea)
     } catch (error) {
       setError(error.message)
     }
@@ -45,6 +50,21 @@ const GeoMapMenuStatistics: React.FC = () => {
           <GeoMenuItem title="Tree Cover Area" checked={null} tabIndex={-1}>
             {!isLoading && statisticsData.length > 0 && (
               <TreeCoverAreaPanel data={statisticsData} countryIso={countryIso} year={year} />
+            )}
+            {!isLoading && statisticsData.length === 0 && !error && <p>Found no data.</p>}
+            {!isLoading && error && <p>An error has occured while fetching the statistics: {error}</p>}
+            {isLoading && <p>Loading...</p>}
+          </GeoMenuItem>
+          <div className="geo-map-menu-separator" />
+          <GeoMenuItem title="Statistical Graphs" checked={null} tabIndex={-3}>
+            {!isLoading && statisticsData.length > 0 && (
+              <StatisticalGraphsPanel
+                data={statisticsData}
+                fra1aForestArea={fra1aForestArea}
+                fra1ALandArea={fra1ALandArea}
+                countryIso={countryIso}
+                year={year}
+              />
             )}
             {!isLoading && statisticsData.length === 0 && !error && <p>Found no data.</p>}
             {!isLoading && error && <p>An error has occured while fetching the statistics: {error}</p>}
